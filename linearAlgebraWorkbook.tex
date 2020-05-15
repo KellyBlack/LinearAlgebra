@@ -25,12 +25,13 @@
   \thechapter\hspace{1em}}{0pt}{\LARGE\bfseries} % Compact Chapter title
 \titlespacing{\chapter}{0pt}{0pt}{0pt}	% Eliminate space before/after
 % chapter
-%\pagestyle{empty}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lfoot{Page \thepage}
-\rfoot{~}
-\cfoot{~}
+\fancyfoot[OL]{~}
+\fancyfoot[EL]{Page \thepage}
+\fancyfoot[OR]{Page \thepage}
+\fancyfoot[ER]{~}
+\fancyfoot[C]{~}
 
 
 \linespread{1.1}
@@ -245,7 +246,7 @@ Free Documentation License".
 
 
 \tableofcontents
-%\thispagestyle{empty}
+\thispagestyle{empty}
 
 \clearpage
 
