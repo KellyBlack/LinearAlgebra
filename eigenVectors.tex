@@ -1,0 +1,303 @@
+% SEC 5.1
+\section{Eigenvectors and Eigenvalues}
+\name
+
+\begin{boxdef}
+	An \textbf{eigenvector} of an $n\times n$ matrix $A$ is a nonzero vector $\vect{x}$ such that $\Axlx$ for some scalar $\lambda$. A scalar $\lambda$ is called an \textbf{eigenvector} of $A$ if there is a nontrivial solution $\vect{x}$ of $\Axlx$; such an $\vect{x}$ is called an \textbf{eigenvector corresponding to $\boldsymbol{\lambda}$}.
+\end{boxdef}
+
+\begin{exercise} % 5.1.Custom (Matrix from 5.1.15)
+	Is $\vect{v}=\begin{bmatrix}1\\0\\1\end{bmatrix}$ an eigenvector of $A=\begin{bmatrix}3&3&-1\\2&8&-2\\-2&-6&4\end{bmatrix}$? If so, find the corresonding eigenvalue.
+	
+	Hint: Check to see if $A\vect{v}=\lambda\vect{v}$ for some $\lambda$.
+\end{exercise}
+\vfill
+
+
+\begin{boxme}
+	Given an eigenvalue $\lambda$ of a matrix $A$, an eigenvector $\vect{x}$ must be a nonzero vector satisfying $\Axlx$. In order to solve for such an $\vect{x}$, we first rewrite $\Axlx$ as follows:
+	\begin{align*}
+	A\vect{x} - \lambda\vect{x} &= \vect{0} \\
+	A\vect{x} - \lambda I\vect{x} &= \vect{0} \\
+	(A-\lambda I)\vect{x} &= \vect{0}
+	\end{align*}
+	If $\vect{x}$ is a nonzero solution to this homogeneous equation, $\vect{x}$ is an eigenvector of $A$ corresponding to $\lambda$.
+\end{boxme}
+
+\begin{exercise} % 5.1.12
+	$$ A = \begin{bmatrix}7&4\\-3&-1\end{bmatrix}, \qquad \lambda = 1,5 $$
+	\begin{multicols}{2}
+		\begin{enumerate}[(a)]
+			\item Compute $(A-\lambda I)$ for $\lambda=1$.
+			
+			$\begin{bmatrix}7&4\\-3&-1\end{bmatrix}-1\begin{bmatrix}1&0\\0&1\end{bmatrix}=$
+			\vspace{2em}
+			\item Find an eigenvector of $A$ with eigenvalue 1.
+			\columnbreak
+			\item Compute $(A-\lambda I)$ for $\lambda=5$.
+			
+			\phantom{$\begin{bmatrix}7&4\\-3&-1\end{bmatrix}-5\begin{bmatrix}1&0\\0&1\end{bmatrix}=$}
+			\vspace{2em}
+			\item Find an eigenvector of $A$ with eigenvalue 5.
+		\end{enumerate}
+	\end{multicols}
+\end{exercise}
+\vfill
+
+
+\newpage
+
+
+\begin{boxthm}
+	\textbf{Theorem 5.1.} \\
+	The eigenvalues of a triangular matrix are the entries on its main diagonal.
+\end{boxthm}
+\vspace{-1em}
+
+\begin{boxme}
+	Note: If 0 is an eigenvalue of $A$, then we have some eigenvector $\vect{x}$ that satisfies $A\vect{x}=0\vect{x}$. In other words, $\Axz$ has a nontrivial solution. According to the invertible matrix theorem, this happens precisely when $A$ is \textbf{not invertible}. So 0 is an eigenvalue of $A$ if, and only if, $A$ is not invertible!
+\end{boxme}
+
+\begin{exercise} % 5.1.17&19
+	Use Theorem 5.1 or the note above along with the Invertible Matrix Theorem to answer the following questions.
+	\begin{multicols}{2}
+		\begin{enumerate}[(a)]
+			\item Find the eigenvalues of the matrix.
+			$$A=\begin{bmatrix}0&0&0\\0&-3&2\\0&0&7\end{bmatrix}$$
+			\columnbreak 
+			\item Find one eigenvalue of the matrix without calculations. Explain your answer.
+			$$B=\begin{bmatrix}-1&3&7\\-1&3&7\\-1&3&7\end{bmatrix}$$
+		\end{enumerate}
+	\end{multicols}
+\end{exercise}
+\vfill
+
+
+\begin{boxme}
+	For an $n\times n$ matrix $A$, the set of all the eigenvectors corresponding to an eigenvalue $\lambda$ along with the zero vector forms a subspace of $\R^n$. This subspace, the set of all solutions to $(A-I\lambda)\vect{x}=\vect{0}$ (or the null space of ($A-\lambda I$)), is called the \textbf{eigenspace} of $A$ corresponding to $\lambda$.
+\end{boxme}
+
+\begin{exercise} % 5.1.13
+	Find a basis for the eigenspace corresponding to the given eigenvalue.
+	$$ A = \begin{bmatrix}4&0&1\\-2&1&0\\-2&0&1\end{bmatrix}, \qquad \lambda = 2 $$
+	Hint: Find a basis for the null space of $(A-\lambda I)$.
+\end{exercise}
+\vfill
+
+%\begin{exercise} % 5.1.10
+%	Find a basis for the eigenspace corresponding to the given eigenvalue.
+%	$$ A = \begin{bmatrix}10&-9\\4&-2\end{bmatrix}, \qquad \lambda = 4 $$
+%	Hint: Find a basis for the null space of $(A-\lambda I)$.
+%\end{exercise}
+%\vfill
+
+
+\newpage
+
+
+% SEC 5.2
+\section{The Characteristic Equation}
+\name
+
+\begin{boxme}
+	Recall that eigenvalues of an $n\times n$ matrix $A$ are scalars, $\lambda$, for which $\Axlx$ has nonzero solutions. From this definition and what we have learned so far, we get the following equivalent notions:
+	\begin{enumerate}[(i)]\itemsep0em
+		\item $\Axlx$ has a nonzero solution.
+		\hfill (Definition of eigenvalue)
+		\item $(A-\lambda I)\vect{x} = \vect{0}$ has a nontrivial (nonzero) solution.
+		\hfill (Matrix algebra)
+		\item $(A - \lambda I)$ is not invertible.
+		\hfill (Invertible Matrix Theorem)
+		\item $\det(A-\lambda I) = 0$.
+		\hfill (Invertible Matrix Theorem)
+	\end{enumerate}
+	A scalar $\lambda$ is an eigenvalue of an $n\times n$ matrix $A$ if, and only if, $\lambda$ satisfies the \textbf{characteristic equation}:
+	\vspace{-1em}
+	$$ \det(A-\lambda I) = 0. $$
+	The expression $\det(A-\lambda I)$ is called the \textbf{characteristic polynomial}---it is a polynomial of degree $n$ in the variable $\lambda$.
+\end{boxme}
+
+\begin{exercise} % 5.2.1&3
+	Find the characteristic polynomial and the eigenvalues of the matrix.
+	\begin{multicols}{2}
+		\begin{enumerate}[(a)]
+			\item $ A= \begin{bmatrix}8&6\\6&8\end{bmatrix} $
+			\item $ B= \begin{bmatrix}-5&2\\1&-1\end{bmatrix} $
+		\end{enumerate}
+	\end{multicols}
+\end{exercise}
+\vfill
+
+
+\begin{boxdef}
+	Each eigenvalue of a matrix $A$ has a (algebraic) \textbf{multiplicity} which is the same as its multiplicity as a root of the characteristic equation.
+	% NOTE: Explain multiplicity with a simple example.
+\end{boxdef}
+
+\begin{exercise} % 5.2.15
+	For the matrices given, list the eigenvalues, repeated according to their multiplicity, i,e., if the multiplicity is 3, list the eigenvalue 3 times. Hint: Note that the matrices are both triangular.
+	\begin{multicols}{2}
+		\begin{enumerate}[(a)]
+			\item $ A= \begin{bmatrix}6&-3&0&1\\0&2&5&5\\0&0&9&3\\0&0&0&6\end{bmatrix} $
+			\item $ B= \begin{bmatrix}4&0&0&0&0\\5&7&0&0&0\\8&6&0&0&0\\5&2&-4&0&0\\5&6&-7&-9&7\end{bmatrix} $
+		\end{enumerate}
+	\end{multicols}
+\end{exercise}
+\vspace{.5in}
+
+
+\newpage
+
+
+\begin{exercise} % 5.2.9
+	Find the characteristic polynomial for the given matrix. You should compute the determinant using either a cofactor expansion or the special formula for $3\times 3$ determinants (Rule of Sarrus).
+	
+	$ A = \begin{bmatrix}1&0&-1\\5&4&-4\\0&5&0\end{bmatrix} $
+\end{exercise}
+\vfill
+
+
+\begin{exercise} % 5.2.1 Custom
+	Find bases for the eigenspaces corresponding to both eigenvalues of $A$. (Begin by finding the characteristic polynomial, and then using it to find the eigenvalues.)
+	$$ A=\begin{bmatrix}1&2\\4&3\end{bmatrix} $$
+\end{exercise}
+\vfill
+
+
+%\begin{exercise} % 5.2.1,6 Custom
+%	If possible, find one eigenvector for each matrix below. Hint: Start by finding the eigenvalues.
+%	\begin{multicols}{2}
+%		\begin{enumerate}[(a)]
+%			\item $ A=\begin{bmatrix}1&2\\4&3\end{bmatrix} $
+%			\item $ B=\begin{bmatrix}-9&4\\-4&-3\end{bmatrix} $
+%		\end{enumerate}
+%	\end{multicols}
+%\end{exercise}
+%\vfill
+
+
+\newpage
+
+
+\section{Diagonalization}
+\name
+
+\begin{boxdef}
+	A matrix $A$ is \textbf{diagonalizable} if $A$ is similar to a diagonal matrix $D$. That is, for some invertible matrix $P$ and diagonal matrix $D$, we have $A=PDP^{-1}$.
+\end{boxdef}
+\vspace{-1em}
+\begin{boxme}
+	Powers of a diagonalizable matrix are easy to compute: $A^k = PD^kP^{-1}$.
+	The matrix $D^k$ is simply $D$ with all diagonal entries raised to the $k$ power.
+\end{boxme}
+
+
+\begin{exercise} % 5.3.1
+	Let $A=PDP^{-1}$. Compute $A^4$ using the diagonalization of $A$. \\
+	(You may want to use a calculator to double check your matrix multiplication calculations.)
+	\begin{align*}
+	P &= \begin{bmatrix}1&4\\2&7\end{bmatrix} &
+	D &= \begin{bmatrix}2&0\\0&1\end{bmatrix}% &
+	%P^{-1} &= \begin{bmatrix}-7&4\\2&-1\end{bmatrix}
+	\end{align*}
+\end{exercise}
+\vfill
+
+
+\begin{boxthm}
+	\textbf{Theorem 5.5.}
+	\textbf{The Diagonalization Theorem} \\
+	An $n\times n$ matrix $A$ is diagonalizable if, and only if, $A$ has $n$ linearly independent eigenvectors.
+	
+	In fact, $A=PDP^{-1}$, with $D$ a diagonal matrix, if, and only if, the columns of $P$ are $n$ linearly independent eigenvectors of $A$. In this case, the diagonal entries of $D$ are eigenvalues of $A$ that correspond, respectively, to the eigenvectors in $P$.
+\end{boxthm}
+
+\begin{exercise} % 5.3.6
+	The matrix $A$ is factored in the form $PDP^{-1}$. Use the Diagonalization Theorem to find the eigenvalues of $A$ and a basis for each eigenspace.
+	$$ A = \begin{bmatrix}4&0&-4\\4&6&8\\0&0&6\end{bmatrix} =
+	\begin{bmatrix}-2&0&-1\\0&1&2\\1&0&0\end{bmatrix}
+	\begin{bmatrix}6&0&0\\0&6&0\\0&0&4\end{bmatrix}
+	\begin{bmatrix}0&0&1\\2&1&4\\-1&0&-2\end{bmatrix} $$
+\end{exercise}
+\vfill
+
+
+\newpage
+
+\begin{boxthm}
+	\textbf{Theorem 5.6.} \\
+	An $n\times n$ matrix with $n$ distinct eigenvalues is diagonalizable.
+\end{boxthm}
+\vspace{-1em}
+\begin{boxdef}
+	Although $n$ \emph{distinct eigenvalues} ensure that an $n\times n$ matrix is definitely diagonalizable, some matrices with repeated eigenvalues are diagonalizable, too. If $A$ has $n$ \emph{linearly independent eigenvectors}, one may construct an \textbf{eigenbasis} for $\R^n$---a basis comprised of just eigenvectors. The existence of an eigenbasis corresponding to a matrix $A$ is enough to ensure diagonalizablility.
+\end{boxdef}
+
+
+\begin{exercise} % 5.3.13a
+	Find an eigenbasis for the matrix $A$ below. The eigenvalues are given. \\
+	Hint: Recall that the eigenspace corresponding to an eigenvalue $\lambda$ is $\Nul(A-\lambda I)$, the set of all solutions to $(A-\lambda I)\vect{x}=\vect{0}$. Find a basis for each eigenspace and combine these vectors to form an eigenbasis.
+	\begin{align*}
+	A &= \begin{bmatrix}1&2&-4\\-1&4&-4\\1&-2&6\end{bmatrix} & \lambda = 2,7
+	\end{align*}
+\end{exercise}
+\vfill
+
+
+\begin{exercise} % 5.3.13b
+	Find matrices $P$ and $D$ such that $A=PDP^{-1}$. Use your work from the previous exercise.
+	\begin{align*}
+	A &= \begin{bmatrix}1&2&-4\\-1&4&-4\\1&-2&6\end{bmatrix}
+	\end{align*}
+\end{exercise}
+\vspace{1.5in}
+
+
+\newpage
+
+\setcounter{section}{4}
+
+% SEC 5.5
+\section{Complex Eigenvalues}
+\name
+
+\begin{boxdef}
+	We define $i = \sqrt{-1}$. Then, the complex numbers, $\mathbb{C}$, is the set of all numbers of the form $a+bi$ for $a, b \in \mathbb{R}$.
+\end{boxdef}
+
+\begin{boxthm}
+	\textbf{The Fundamental Theorem of Algebra} \\
+	Let $p(x)$ be a polynomial with complex coefficients of degree $n>0$. Then, with multiplicities, $p(x)$ has $n$ zeroes.
+\end{boxthm}
+
+\begin{exercise} % 5.5.2
+	Consider $A  = \begin{bmatrix}5&-5\\1&1 \end{bmatrix}.$
+	\begin{enumerate}[(a)]
+		\item Find the eigenvalues of $A$.
+		\vfill
+		\item Find a basis for each eigenspace of $A$. (Hint: Find a basis for one of the eigenvectors, $\lambda$. Then, the basis corresponding to $\overline{\lambda}$ is the complex conjugate of the basis for $\lambda$.)
+		\vfill
+		\vfill
+	\end{enumerate}
+\end{exercise}
+
+\newpage
+
+\begin{boxthm}
+	\textbf{Theorem 5.9.} \\
+	Let $A$ be a real $2 \times 2$ matrix with complex eigenvalue $\lambda = a-bi$ $(b \ne 0$) and an associated eigenvector $\vect{v}$ in $\mathbb{C}^2$. Then, $$A = PCP^{-1}, \text{ where } P = [ \re \vect{v} \text{ } \im \vect{v} ] \text{ and } C = \begin{bmatrix}a&-b\\b&a \end{bmatrix}.$$
+\end{boxthm}
+
+\begin{exercise} 
+	Consider $A  = \begin{bmatrix}5&-5\\1&1 \end{bmatrix}.$ (Same matrix as previous page.)
+	\begin{enumerate}[(a)]
+		\item Find matrices $P$ and $C$ such that $A$, $P$, and $C$ satisfy the conditions of the theorem above.
+		\vfill
+		\item Verify your answer in (a) is correct by verifying that $A = PCP^{-1}$. (Hint: You can do this by just verifying that $AP=PC$.)
+		\vfill
+		\item Factor the matrix $C$ into a scaling matrix, and a rotation matrix. That is, let $r = |\lambda| = \sqrt{a^2+b^2}$, where $ C = \begin{bmatrix}a&-b\\b&a \end{bmatrix}.$ Then factor to get $C = \begin{bmatrix}r&0\\0&r \end{bmatrix}\begin{bmatrix}a/r&-b/r\\b/r&a/r \end{bmatrix}.$
+		\vfill
+	\end{enumerate}
+\end{exercise}
+
+\newpage
