@@ -293,6 +293,61 @@ Usually vectors are depicted in bold font when in print (e.g. $\textbf{u}$, $\te
 \end{exercise}
 \vspace{1.5in}
 
+\begin{exercise} % locations in a qr code as a vector equation
+
+  Quick response (QR) codes are used to display pixels in a two
+  dimensional array. A pixel is either black or white. Smartphone apps
+  take an image of a QR code and convert the pixels into a string of
+  characters. There are a number of important positions in a QR code
+  including the position markers in the lower left, upper left, and
+  upper right of the code.
+
+  The markers help identify the orientation of the code. An example of
+  the codes is shown in Figure \ref{fig:qrCodeExample}.
+
+  \begin{figure}[h]
+    %\centering
+    \begin{tabular}[h]{p{5cm}@{\hspace{3em}}p{5cm}}
+    \qrcode[nolink,level=L,height=5cm]{abcd} &
+     \begin{minipage}[h]{5cm}
+         \vspace{1.5em}
+         \includegraphics[height=5cm]{img/qrCodeSnapshot}
+     \end{minipage}
+    \end{tabular}
+    \caption{Example of a QR code. The code on the left is the
+      original, and the code on the right is the skewed image obtained
+      using a mobile phone.}
+    \label{fig:qrCodeExample}
+  \end{figure}
+
+    \begin{figure}[h]
+    \centering
+    \begin{tabular}{l@{\hspace{3em}}r}
+      \includegraphics[width=6cm]{img/qrCodeSnapshotUV} &
+      \includegraphics[width=6cm]{img/qrCodeSnapshotUV-coordinates}
+    \end{tabular}
+    \caption{Example of a QR code. The code on the left indicates the
+      horizontal and vertical directions for the image of the
+      code. The code on the right indicates the locations of the
+      pixels marking the tail and the head of the vectors indicating
+      the directions. }
+    \label{fig:qrCodeExampleDirections}
+  \end{figure}
+
+  \begin{figure}[h]
+    \centering
+    %\begin{tabular}{l@{\hspace{3em}}r}
+      \includegraphics[width=6cm]{img/qrCodeSnapshotUV-points.png}
+    %\end{tabular}
+    \caption{Example of a QR code. The pixels indicated by points $a$,
+    $b$, $c$ and $d$ are locations that provide information about the
+    text for the code. Each location should either be a black square
+    or a white square.}
+    \label{fig:qrCodeExampleLocations}
+  \end{figure}
+
+\end{exercise}
+
 
 \newpage
 
