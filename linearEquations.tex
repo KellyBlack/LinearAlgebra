@@ -295,6 +295,7 @@ Usually vectors are depicted in bold font when in print (e.g. $\textbf{u}$, $\te
 
 \clearpage
 \begin{exercise} % locations in a qr code as a vector equation
+  \label{exercise:QRCode}
 
   Quick response (QR) codes are used to display bits in a two
   dimensional array. Each bit is in the shape of a rectangle and is
@@ -321,6 +322,16 @@ Usually vectors are depicted in bold font when in print (e.g. $\textbf{u}$, $\te
   coefficients for the different directions indicate where the
   locations of certain points are within the QR code.
 
+  An example of a QR code is shown in Figure
+  \ref{fig:qrCodeExample}. On the left is the QR code, and on the
+  right is a picture of the code taken using a mobile phone. The
+  images in Figure \ref{fig:qrCodeExampleDirections} show how the
+  orientation can be determined given the location of the large boxes
+  in the corners. The image on the right gives the coordinates with
+  respect to the pixels within the image. The images in Figure
+  \ref{fig:qrCodeExampleLocations} are used to determine the values of
+  the given pixels.
+
   \begin{figure}[h]
     %\centering
     \begin{tabular}[h]{p{5cm}@{\hspace{3em}}p{5cm}}
@@ -336,7 +347,7 @@ Usually vectors are depicted in bold font when in print (e.g. $\textbf{u}$, $\te
     \label{fig:qrCodeExample}
   \end{figure}
 
-    \begin{figure}[h]
+  \begin{figure}[h]
     \centering
     \begin{tabular}{l@{\hspace{3em}}r}
       \includegraphics[width=6cm]{img/qrCodeSnapshotUV} &
@@ -361,6 +372,31 @@ Usually vectors are depicted in bold font when in print (e.g. $\textbf{u}$, $\te
     or a white square.}
     \label{fig:qrCodeExampleLocations}
   \end{figure}
+
+  \begin{enumerate}
+  \item Using the images in Figure \ref{fig:qrCodeExampleDirections}
+    determine the vectors $\vec{u}$ and $\vec{v}$.
+    \vfill
+
+  \item In Figure \ref{fig:qrCodeExampleLocations} the point $a$ is
+    located along $\vec{v}$. So if the point is expressed as
+    \begin{eqnarray*}
+      x_1 \vec{u} + x_2 \vec{v},
+    \end{eqnarray*}
+    then $x_1=0$. Since the point $a$ is 9.5 boxes up out of 14 then
+    $x_2=\frac{9.5}{14}$. (The point starts halfway in the initial box
+    and ends half way into the final box.) Likewise point $b$ can be
+    expressed as
+    \begin{eqnarray*}
+      \frac{6.5}{14} \vec{u} + \vec{v}.
+    \end{eqnarray*}
+    Determine how to express the points $c$ and $d$ as sums of the
+    vectors $\vec{u}$ and $\vec{v}$.
+
+    \vfill
+
+  \item 
+  \end{enumerate}
 
 \end{exercise}
 
