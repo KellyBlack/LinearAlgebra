@@ -293,6 +293,7 @@ Usually vectors are depicted in bold font when in print (e.g. $\textbf{u}$, $\te
 \end{exercise}
 \vspace{1.5in}
 
+\clearpage
 \begin{exercise} % locations in a qr code as a vector equation
 
   Quick response (QR) codes are used to display pixels in a two
@@ -303,7 +304,18 @@ Usually vectors are depicted in bold font when in print (e.g. $\textbf{u}$, $\te
   upper right of the code.
 
   The markers help identify the orientation of the code. An example of
-  the codes is shown in Figure \ref{fig:qrCodeExample}.
+  the codes is shown in Figure \ref{fig:qrCodeExample}. In the lower
+  left, upper left, and upper right corners are special areas to
+  indicate the orientation and location of the box that contains the
+  QR code. This is shown in Figure
+  \ref{fig:qrCodeExampleDirections}.
+
+  The vectors that can be calculated represent the vertical
+  ($\vec{v}$) and horizontal ($\vec{u}$) directions of the skewed
+  image. Given a point in the QR code, it can be expressed as a linear
+  combination of the $\vec{v}$ and $\vec{u}$ directions. The
+  coefficients for the different directions indicate where the
+  locations of certain points are within the QR code.
 
   \begin{figure}[h]
     %\centering
