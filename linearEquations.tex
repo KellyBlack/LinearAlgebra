@@ -310,7 +310,11 @@ Usually vectors are depicted in bold font when in print (e.g. $\textbf{u}$, $\te
   QR code. This is shown in Figure
   \ref{fig:qrCodeExampleDirections}.
 
-  The vectors that can be calculated represent the vertical
+  One problem with a QR code is that the image taken by a camera is
+  not oriented exactly over the code. The boxes that determine the
+  orientation of the code can be used to define vectors that can be
+  used to determine the location of a bit in the image of the QR
+  code. The vectors that can be calculated represent the vertical
   ($\vec{v}$) and horizontal ($\vec{u}$) directions of the skewed
   image. Given a point in the QR code, it can be expressed as a linear
   combination of the $\vec{v}$ and $\vec{u}$ directions. The
