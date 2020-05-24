@@ -53,6 +53,27 @@
   \node[black,anchor=north west] at (6.5,6) {Person I};
   \node[black,anchor=north west] at (6.5,5.85) {look up to};
   \node[black,anchor=north west] at (7.5,6) {Pets};
+  \node[black,anchor=north] at (6.25,5) {\large Favourite};
+  
+  % Draw the pie chart
+  \begin{scope}[shift={(6.25,2.75)}]
+    \draw[thick,black] (0,0) circle (1.5);
+    \draw[thick,black] (0:1.5)   -- (180:1.5);
+    \draw[thick,black] (45:1.5)  -- (225:1.5);
+    \draw[thick,black] (90:1.5)  -- (270:1.5);
+    \draw[thick,black] (135:1.5) -- (315:1.5);
+
+    \node[black,anchor=north] at ( 22.5:1.75) {Food};
+    \node[black,anchor=north] at ( 67.5:1.85) {Artist/Song};
+    \node[black,anchor=north] at (112.5:1.75) {Color};
+    \node[black,anchor=north] at (157.5:1.95) {Sports Team};
+    \node[black,anchor=north] at (202.5:1.75) {TV Show};
+    \node[black,anchor=north] at (247.5:1.75) {Book};
+    \node[black,anchor=north] at (292.5:1.75) {Movie};
+    \node[black,anchor=north] at (337.5:1.85) {Class Taken};
+
+
+  \end{scope}
   
 \end{tikzpicture}
 
