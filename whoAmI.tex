@@ -1,16 +1,37 @@
 
 \clearpage
 
-\begin{tikzpicture}[y=2.2cm, x=2.2cm,font=\sffamily]
+\hspace*{-1cm} \vspace*{-0.2cm}
+\begin{tikzpicture}[y=2.3cm, x=2.3cm,font=\sffamily]
+
+  \begin{scope}[shift={(-5,0)}]
+  % Outline around the whole thing.
   \draw[thick,black] (0,0.5) -- (8.5,0.5) -- (8.5,11) -- (0,11) -- cycle;
-  \draw[thick,black] (4,0.5) -- (4,11);
   \draw[thick,black] (0,0.5) -- (0,0) -- (8.5,0) -- (8.5,0.5);
-  \draw[thick,black] (0,6.5) -- (4,6.5);
-  \draw[thick,black] (0,2) -- (4,2);
   \draw[thick,black] (0,0.5) -- (8.5,0.5);
+
+  % Boxes for the left side.
+  \draw[thick,black] (4,0.5) -- (4,11);
+  \draw[thick,black] (0,6.5) -- (4,6.5) -- (0,2) -- (4,2);
+
+  % Boxes for the right side.
   \draw[thick,black] (4,10.5) -- (8.5,10.5);
+  \draw[thick,black] (4,10) -- (8.5,10);
+  \draw[thick,black] (6.5,5) -- (6.5,10);
   \draw[thick,black] (4,5) -- (8.5,5);
-  %\node[black,anchor=south west] at (1.7,2.4) {$\beta$};
+
+  % Text boxes in the upper right
+  \draw[thick,black] (4,8) -- (6.5,8);
+  \draw[thick,black] (6.5,9.75) -- (8.5,9.75);
+  \draw[thick,black] (6.5,9.5) -- (8.5,9.5);
+  \draw[thick,black] (6.5,9.25) -- (8.5,9.25);
+  \draw[thick,black] (6.5,9.0) -- (8.5,9.0);
+  \draw[thick,black] (6.5,8.75) -- (8.5,8.75);
+
+  \draw[thick,black] (6.5,6) -- (8.5,6);
+  \draw[thick,black] (7.5,6) -- (7.5,5);
+  
+  \end{scope}
 \end{tikzpicture}
 
 \clearpage
