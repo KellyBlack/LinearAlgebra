@@ -4,7 +4,6 @@
 \hspace*{-1cm} \vspace*{-0.2cm}
 \begin{tikzpicture}[y=2.3cm, x=2.3cm,font=\sffamily]
 
-  \begin{scope}[shift={(-5,0)}]
   % Outline around the whole thing.
   \draw[thick,black] (0,0.5) -- (8.5,0.5) -- (8.5,11) -- (0,11) -- cycle;
   \draw[thick,black] (0,0.5) -- (0,0) -- (8.5,0) -- (8.5,0.5);
@@ -20,7 +19,7 @@
   \draw[thick,black] (6.5,5) -- (6.5,10);
   \draw[thick,black] (4,5) -- (8.5,5);
 
-  % Text boxes in the upper right
+  % boxes in the upper right
   \draw[thick,black] (4,8) -- (6.5,8);
   \draw[thick,black] (6.5,9.75) -- (8.5,9.75);
   \draw[thick,black] (6.5,9.5) -- (8.5,9.5);
@@ -30,8 +29,14 @@
 
   \draw[thick,black] (6.5,6) -- (8.5,6);
   \draw[thick,black] (7.5,6) -- (7.5,5);
+
+  % Text on the left side
+  \node[black,anchor=north] at (2,11) {Draw a self portrait};
+  \node[black,anchor=north] at (2,6.5) {An accomplishment I am proud of};
+  \node[black,anchor=south] at (2,2) {I have never...};
+  \node[black,anchor=north] at (2,2) {Qualities of a good math teacher.};
+  \node[black,anchor=north west] at (0,0.5) {Something interesting about myself.};
   
-  \end{scope}
 \end{tikzpicture}
 
 \clearpage
