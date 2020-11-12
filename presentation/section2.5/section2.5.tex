@@ -1,0 +1,623 @@
+\documentclass[svgnames,table,,aspectratio=169]{beamer}
+%\documentclass[svgnames,table,handout,aspectratio=129]{beamer}
+\usepackage{hhline}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{amssymb}
+%\usepackage{/usr/lib64/R/share/texmf/Sweave}
+\usepackage{polynom}
+\usepackage{qrcode}
+
+
+%\input{latexdefinitions}
+\definecolor{georgiaRed}{RGB}{100,0,00}
+\definecolor{mediumGray}{gray}{0.6}
+
+
+
+\usetheme{Frankfurt}%
+%\usetheme{Warsaw}%
+%\useoutertheme{smoothbars}
+
+
+%\usecolortheme{seagull}
+\usecolortheme{beaver}
+\logo{\includegraphics[height=.125in]{ugaLogo}}
+
+% Note that the colour definitions are given in the latexDefinitions
+% file.
+\setbeamercolor{palette primary}{fg=georgiaRed,bg=white}
+\setbeamercolor{palette secondary}{fg=georgiaRed,bg=white}
+\setbeamercolor{palette tertiary}{fg=georgiaRed,bg=white}
+\setbeamercolor{palette quaternary}{bg=mediumGray,fg=black}
+\setbeamercolor{block title}{fg=white,bg=georgiaRed}
+\setbeamercolor{block body}{fg=black,bg=black!10}
+\setbeamercolor{titlelike}{bg=georgiaRed,fg=white} % parent=palette quaternary}
+
+% Define the variable to determine whether or not the clicker quizzes
+% are visible in the resulting output.
+\newtoggle{clicker}
+\toggletrue{clicker}
+%\togglefalse{clicker}
+
+
+% To display a lecture uncomment out the "includeonly" line below to
+% match the name of the file. You do not have to do anything with the
+% lecture line below and can leave it commented out. It is in place
+% because at one time we had multiple lectures within a file, but that
+% has been changed.
+
+
+
+\mode<presentation>{
+  \setbeamercovered{invisible}
+  \setbeameroption{hide notes}
+}
+
+\mode<handout>{
+ 
+  \usepackage{pgfpages}
+  %\pgfpagesuselayout{4 on 1}[letterpaper, border shrink=5mm]
+  \pgfpagesuselayout{resize to}[letterpaper,border shrink=5mm]
+  \setbeameroption{show notes}
+
+
+  %\pgfpagesphysicalpageoptions{logical pages=2,physical
+  %height=\pgfpageoptionheight,physical width=\pgfpageoptionwidth}
+  % Set up the pages for notes.
+  % This idea and some code came from
+  % http://www.guidodiepen.nl/2009/07/creating-latex-beamer-handouts-with-notes/
+
+
+
+  \pgfpagesdeclarelayout{3 on 1 with notes} {
+    \edef\pgfpageoptionheight{11in} %\the\paperheight}
+    \edef\pgfpageoptionwidth{8.5in} %\the\paperwidth}
+    \edef\pgfpageoptionborder{0pt}
+  }
+
+  {
+
+	\AtBeginDocument{
+      \newbox\notesbox
+      \setbox\notesbox=\vbox{
+        \hsize=\paperwidth
+        \vskip-2.5cm\hskip-5cm\vbox{
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+
+          \vspace*{-9.75cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+
+        }
+
+      }
+
+    \pgfpagesphysicalpageoptions
+    {%
+      logical pages=6,%
+      physical height=\pgfpageoptionheight,%
+      physical width=\pgfpageoptionwidth,%
+      last logical shipout=3%
+    }
+    
+    \pgfpageslogicalpageoptions{1}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.25\pgfphysicalwidth}{.82\pgfphysicalheight}%
+    }%
+    \pgfpageslogicalpageoptions{2}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.25\pgfphysicalwidth}{.47\pgfphysicalheight}%
+    }%
+    \pgfpageslogicalpageoptions{3}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.25\pgfphysicalwidth}{.17\pgfphysicalheight}%
+    }%	
+	\pgfpageslogicalpageoptions{4}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.85\pgfphysicalwidth}{.82\pgfphysicalheight},%
+      copy from=4
+    }%
+    \pgfpageslogicalpageoptions{5}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.85\pgfphysicalwidth}{.47\pgfphysicalheight},%
+      copy from=5
+    }%
+    \pgfpageslogicalpageoptions{6}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.85\pgfphysicalwidth}{.17\pgfphysicalheight},%
+      copy from=6
+    }%
+    
+      \pgfpagesshipoutlogicalpage{4}\copy\notesbox
+      \pgfpagesshipoutlogicalpage{5}\copy\notesbox
+      \pgfpagesshipoutlogicalpage{6}\copy\notesbox
+    }
+  }
+
+  \pgfpagesuselayout{3 on 1 with notes}
+
+}
+
+\setbeamercolor{upper separation line head}{bg=red}
+\setbeamercolor{headline}{bg=red}
+\setbeamertemplate{headline}
+{%
+\begin{beamercolorbox}{section in head/foot}
+\insertsectionnavigationhorizontal{.75\textwidth}{}{}
+\hfill \insertpagenumber /\insertdocumentendpage
+\end{beamercolorbox}%
+}
+\setbeamercolor{section number projected}{bg=red,fg=black}
+\setbeamercolor{subsection number projected}{bg=red,fg=black}
+%\setbeamercolor{frametitle}{bg=lightgray,fg=black}
+
+\setbeamertemplate{itemize item}{\color{georgiaRed}$\blacklozenge$}
+\setbeamertemplate{itemize subitem}{\color{georgiaRed}$\blacktriangleright$}
+
+\newcommand{\dotfield}[2]{%
+  \begin{tikzpicture}[y=0.25cm, x=0.25cm,font=\sffamily]
+    \foreach \y in {0,...,#2} {
+      \foreach \x in {0,...,#1} {
+        \draw[fill=georgiaRed,opacity=0.1] (\x,\y)  circle [radius=0.03em];
+      }
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\twoByTwo}[4]{%
+  \left[
+    \begin{array}{rr}
+      #1 & #2 \\
+      #3 & #4 \\
+    \end{array}
+  \right]
+}
+
+\newcommand{\threeByThree}[9]{%
+  \left[
+    \begin{array}{rrr}
+      #1 & #2 & #3 \\
+      #4 & #5 & #6 \\
+      #7 & #8 & #9
+    \end{array}
+  \right]
+}
+
+\newcommand{\columnVector}[1]{%
+  \left[
+    \begin{array}{r}
+    #1                           
+    \end{array}
+  \right]
+}
+
+
+\newcommand{\rowFour}[4]{
+  #1 & #2 & #3 & #4
+}
+
+\newcommand{\threeRows}[3]{
+  \left[
+    \begin{array}{rrrr}
+      #1 \\
+      #2 \\
+      #3 
+    \end{array}
+  \right]
+}
+
+
+
+\begin{document}
+
+
+
+\author{\textsc{T. Alli$^{a}$, K. Black$^{a}$}}
+\institute{$^a$Department of Mathematics, University of Georgia, GA}
+\subject{Linear Algebra}
+\keywords{Linear Transformation, Vectors, Matrices, Linear Algebra}
+
+%\lecture{Partial Fractions}{partial-fractions}
+%\section{Rational Functions}
+
+\title{Section 2.5: Linear Indepenence}
+\subtitle{Expressing Vectors As Linear Combinations}
+
+
+\date{} % {\today}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+
+\section{Goals}
+
+\begin{frame}{Goals}
+
+  \begin{itemize}
+  \item Determine whether or not a set of vectors is linearly
+    independent or not.
+  \item Given a set of vectors determine which ones can be expressed
+    as a linear combination of the other vectors.
+  \item Relate the reduced row echelon form of a matrix with the
+    linear independence of its columns.
+  \end{itemize}
+
+\end{frame}
+
+\section{Motivation For Linear Independence/Dependence}
+
+\begin{frame}{Motivation For Linear Independence}
+
+  Suppose we have three vectors:
+  \begin{eqnarray*}
+    \left\{
+    \columnVector{1 \\ 0 \\ 0},
+    \columnVector{0 \\ 1 \\ 0},
+    \columnVector{0 \\ 0 \\ 1}
+    \right\}
+  \end{eqnarray*}
+
+  \uncover<2->{
+    Given another vector, I can express the new vector as a linear
+    combination of these vectors:
+    \begin{eqnarray*}
+      \columnVector{ -3 \\ 2 \\ 4}
+      & = &
+      \uncover<3->{
+         -3 \columnVector{1 \\ 0 \\ 0} +
+          2 \columnVector{0 \\ 1 \\ 0} +
+          4 \columnVector{0 \\ 0 \\ 1}
+      }
+    \end{eqnarray*}
+  }
+
+\end{frame}
+
+\begin{frame}{Is It Always So Easy?}
+
+  Suppose we have three vectors:
+  \begin{eqnarray*}
+    \left\{
+    \columnVector{1 \\ 0 \\ 0},
+    \columnVector{1 \\ 1 \\ 0},
+    \columnVector{1 \\ 1 \\ 1}
+    \right\}
+  \end{eqnarray*}
+
+  \only<2-3>{
+    Given another vector, I can express the new vector as a linear
+    combination of these vectors:
+    \begin{eqnarray*}
+      \columnVector{ -3 \\ 2 \\ 4}
+      & = &
+      \uncover<3>{
+          a \columnVector{1 \\ 0 \\ 0} +
+          b \columnVector{1 \\ 1 \\ 0} +
+          c \columnVector{1 \\ 1 \\ 1}
+      }
+    \end{eqnarray*}
+  }
+
+  \only<4>
+  {
+    \begin{eqnarray*}
+      \left[
+      \begin{array}{rrr|r}
+        1 & 1 & 1 & -3 \\
+        0 & 1 & 1 &  2 \\
+        0 & 0 & 1 &  4
+      \end{array}
+      \right]
+    \end{eqnarray*}
+  }
+
+\end{frame}
+
+\begin{frame}{Can I Do This For Any Vector?}
+
+  Given a set of vectors can I determine whether or not I can write
+  \textbf{any} vector as a linear combination of the vectors in the
+  set?
+
+  \vfill
+  
+  \uncover<2->{Excellent question, but this is not what we will do
+    today! We will save this for later. Instead we ask a related
+    question.}
+
+  \vfill
+  
+\end{frame}
+
+\begin{frame}{Can I Find Any Vector In A Set and Write As A Linear
+    Combination Of The Others?}
+
+  Suppose we have three vectors:
+  \begin{eqnarray*}
+    \left\{
+    \columnVector{1 \\ 0 \\ 0},
+    \columnVector{1 \\ 1 \\ 0},
+    \columnVector{1 \\ 2 \\ 0}
+    \right\}
+  \end{eqnarray*}
+
+  One of these vectors can be written in terms of the others:
+  \begin{eqnarray*}
+    \columnVector{ 1 \\ 2 \\ 0}
+    & = &
+          -1 \columnVector{1 \\ 0 \\ 0} +
+    2 \columnVector{1 \\ 1 \\ 0} 
+  \end{eqnarray*}
+
+
+\end{frame}
+
+\begin{frame}{Can I Find Any Vector In A Set and Write As A Linear
+    Combination Of The Others?}
+
+  Suppose we have three vectors:
+  \begin{eqnarray*}
+    \left\{
+    \columnVector{1 \\ 0 \\ 0},
+    \columnVector{1 \\ 1 \\ 0},
+    \columnVector{1 \\ 2 \\ 3},
+    \columnVector{1 \\ 2 \\ 1}
+    \right\}
+  \end{eqnarray*}
+
+  Which one can be written in terms of some of the others? How many?
+
+\end{frame}
+
+
+\section{Linear Independence}
+
+\begin{frame}{Can I Find Any Vector In A Set and Write As A Linear
+    Combination Of The Others?}
+
+  Suppose we have three vectors:
+  \begin{eqnarray*}
+    \left\{
+    \columnVector{1 \\ 0 \\ 0},
+    \columnVector{1 \\ 1 \\ 0},
+    \columnVector{1 \\ 2 \\ 3},
+    \columnVector{1 \\ 2 \\ 1}
+    \right\}
+  \end{eqnarray*}
+
+  Look at a general linear combination:
+  \begin{eqnarray*}
+    x_1 \columnVector{1 \\ 0 \\ 0} +
+    x_2 \columnVector{1 \\ 1 \\ 0} +
+    x_3 \columnVector{1 \\ 2 \\ 3} +
+    x_4 \columnVector{1 \\ 2 \\ 1}
+    & = &
+    \vec{0}.
+  \end{eqnarray*}
+  If one of these vectors can be written in terms of the others then
+  the coefficient, $x_j$, does not \textbf{have} to be zero. If the
+  \textbf{only} way this can work out is that $x_1=0$, $x_2=0$,
+  $x_3=0$, and $x_4=0$ then there is no way to express one of the
+  vectors as a linear combination of the others.
+  
+
+\end{frame}
+
+\begin{frame}{Example}
+
+  Can I express one of these vectors as a linear combination of the others?
+    \begin{eqnarray*}
+      \left\{
+      \columnVector{ 1 \\   2 \\   7 \\   0},
+      \columnVector{3  \\  7  \\  25 \\  -2},
+      \columnVector{0  \\  2  \\  8  \\ -4},
+      \columnVector{2  \\  4  \\ 17  \\ -3},
+      \columnVector{1  \\  3  \\ 12  \\ -6},
+      \columnVector{2  \\  8  \\ 28  \\ -4}
+    \right\}
+  \end{eqnarray*}
+
+  \uncover<2->{
+    \begin{eqnarray*}
+      x_1 \columnVector{ 1 \\   2 \\   7 \\   0} + 
+      x_2 \columnVector{3  \\  7  \\  25 \\  -2} +
+      x_3 \columnVector{0  \\  2  \\  8  \\ -4} +
+      x_4 \columnVector{2  \\  4  \\ 17  \\ -3} +
+      x_5 \columnVector{1  \\  3  \\ 12  \\ -6} +
+      x_6 \columnVector{2  \\  8  \\ 28  \\ -4}
+      & = &
+      \vec{0}.
+    \end{eqnarray*}
+  }
+  
+\end{frame}
+
+
+\begin{frame}{Augmented Matrix}
+
+  The augmented matrix for the system of linear equations,
+  \begin{eqnarray*}
+    x_1 \columnVector{ 1 \\   2 \\   7 \\   0} + 
+    x_2 \columnVector{3  \\  7  \\  25 \\  -2} +
+    x_3 \columnVector{0  \\  2  \\  8  \\ -4} +
+    x_4 \columnVector{2  \\  4  \\ 17  \\ -3} +
+    x_5 \columnVector{1  \\  3  \\ 12  \\ -6} +
+    x_6 \columnVector{2  \\  8  \\ 28  \\ -4}
+    & = &
+    \vec{0},
+  \end{eqnarray*}
+
+  \only<2>{
+  \begin{eqnarray*}
+    \left[
+    \begin{array}{rrrrrr}
+      1 &  3 &  0 &  2 &  1 & 2 \\
+      2 &  7 &  2 &  4 &  3 & 8 \\
+      7 & 25 &  8 & 17 & 12 &28 \\
+      0 & -2 & -4 & -3 & -6 &-4
+    \end{array}
+    \right]
+  \end{eqnarray*}
+  }
+  \only<3>{
+  \begin{eqnarray*}
+    \left[
+    \begin{array}{rrrrrr}
+      1 & 3 & 0 & 2 & 1 & 2 \\
+      0 & 1 & 2 & 0 & 1 & 4 \\
+      0 & 0 & 0 & 3 & 1 &-2 \\
+      0 & 0 & 0 & 0 &-3 & 2
+    \end{array}
+    \right]
+  \end{eqnarray*}
+  }
+
+\end{frame}
+
+\begin{frame}{Solving}
+    \begin{eqnarray*}
+    \left[
+    \begin{array}{rrrrrr}
+      1 & 3 & 0 & 2 & 1 & 2 \\
+      0 & 1 & 2 & 0 & 1 & 4 \\
+      0 & 0 & 0 & 3 & 1 &-2 \\
+      0 & 0 & 0 & 0 &-3 & 2
+    \end{array}
+    \right]
+  \end{eqnarray*}
+
+  \dotfield{60}{18}
+  
+\end{frame}
+
+\begin{frame}{Results}
+
+  \begin{columns}
+    \column{0.3\textwidth}
+
+    \begin{eqnarray*}
+      x_1 & = & 6 x_3 +  \frac{94}{9} x_6 \\
+      x_2 & = & -2 x_3 + \frac{-14}{3} x_6 \\
+      x_3 & = & x_3 \\
+      x_4 & = & \frac{4}{9} x_6 \\
+      x_5 & = & \frac{2}{3} x_6 \\
+      x_6 & = & x_6
+    \end{eqnarray*}
+
+    \column{0.7\textwidth}
+
+    \begin{eqnarray*}
+      x_1 \columnVector{ 1 \\   2 \\   7 \\   0} + 
+      x_2 \columnVector{3  \\  7  \\  25 \\  -2} +
+      x_3 \columnVector{0  \\  2  \\  8  \\ -4} +  & & \\
+      x_4 \columnVector{2  \\  4  \\ 17  \\ -3} + 
+      x_5 \columnVector{1  \\  3  \\ 12  \\ -6} +
+      x_6 \columnVector{2  \\  8  \\ 28  \\ -4}
+      & = &
+    \vec{0},
+  \end{eqnarray*}
+
+  \end{columns}
+  
+\end{frame}
+
+\begin{frame}{Definition}
+
+  \begin{block}{Linear Independence}
+    A set of vectors,
+    $\left\{ \vec{v}_1, \vec{v}_2, \ldots , \vec{v}_k \right\}$, is
+    linearly independent if and only if the \textbf{only} solution to
+    the vector equation
+    \begin{eqnarray*}
+      x_1 \vec{v}_1 + x_2 \vec{v}_2 +  \cdots + x_k \vec{v}_k
+      & = & \vec{0}
+    \end{eqnarray*}
+    is $x_1=0$, $x_2=0$, $\ldots$, $x_k=0$.
+  \end{block}
+  
+  
+\end{frame}
+
+\section{Geometric View}
+
+\begin{frame}{Geometric View}
+  \dotfield{60}{24}
+\end{frame}
+
+\begin{frame}{Geometric View}
+  \dotfield{60}{24}
+\end{frame}
+
+\begin{frame}{Geometric View}
+  \dotfield{60}{24}
+\end{frame}
+
+
+\begin{frame}{}
+  \dotfield{60}{24}
+\end{frame}
+
+
+\end{document}

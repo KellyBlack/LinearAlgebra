@@ -1,0 +1,565 @@
+\documentclass[svgnames,table,,aspectratio=169]{beamer}
+%\documentclass[svgnames,table,handout,aspectratio=129]{beamer}
+\usepackage{hhline}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{amssymb}
+%\usepackage{/usr/lib64/R/share/texmf/Sweave}
+\usepackage{polynom}
+\usepackage{qrcode}
+
+
+%\input{latexdefinitions}
+\definecolor{georgiaRed}{RGB}{100,0,00}
+\definecolor{mediumGray}{gray}{0.6}
+
+
+
+\usetheme{Frankfurt}%
+%\usetheme{Warsaw}%
+%\useoutertheme{smoothbars}
+
+
+%\usecolortheme{seagull}
+\usecolortheme{beaver}
+\logo{\includegraphics[height=.125in]{ugaLogo}}
+
+% Note that the colour definitions are given in the latexDefinitions
+% file.
+\setbeamercolor{palette primary}{fg=georgiaRed,bg=white}
+\setbeamercolor{palette secondary}{fg=georgiaRed,bg=white}
+\setbeamercolor{palette tertiary}{fg=georgiaRed,bg=white}
+\setbeamercolor{palette quaternary}{bg=mediumGray,fg=black}
+\setbeamercolor{block title}{fg=white,bg=georgiaRed}
+\setbeamercolor{block body}{fg=black,bg=black!10}
+\setbeamercolor{titlelike}{bg=georgiaRed,fg=white} % parent=palette quaternary}
+
+% Define the variable to determine whether or not the clicker quizzes
+% are visible in the resulting output.
+\newtoggle{clicker}
+\toggletrue{clicker}
+%\togglefalse{clicker}
+
+
+% To display a lecture uncomment out the "includeonly" line below to
+% match the name of the file. You do not have to do anything with the
+% lecture line below and can leave it commented out. It is in place
+% because at one time we had multiple lectures within a file, but that
+% has been changed.
+
+
+
+\mode<presentation>{
+  \setbeamercovered{invisible}
+  \setbeameroption{hide notes}
+}
+
+\mode<handout>{
+ 
+  \usepackage{pgfpages}
+  %\pgfpagesuselayout{4 on 1}[letterpaper, border shrink=5mm]
+  \pgfpagesuselayout{resize to}[letterpaper,border shrink=5mm]
+  \setbeameroption{show notes}
+
+
+  %\pgfpagesphysicalpageoptions{logical pages=2,physical
+  %height=\pgfpageoptionheight,physical width=\pgfpageoptionwidth}
+  % Set up the pages for notes.
+  % This idea and some code came from
+  % http://www.guidodiepen.nl/2009/07/creating-latex-beamer-handouts-with-notes/
+
+
+
+  \pgfpagesdeclarelayout{3 on 1 with notes} {
+    \edef\pgfpageoptionheight{11in} %\the\paperheight}
+    \edef\pgfpageoptionwidth{8.5in} %\the\paperwidth}
+    \edef\pgfpageoptionborder{0pt}
+  }
+
+  {
+
+	\AtBeginDocument{
+      \newbox\notesbox
+      \setbox\notesbox=\vbox{
+        \hsize=\paperwidth
+        \vskip-2.5cm\hskip-5cm\vbox{
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+
+          \vspace*{-9.75cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+
+        }
+
+      }
+
+    \pgfpagesphysicalpageoptions
+    {%
+      logical pages=6,%
+      physical height=\pgfpageoptionheight,%
+      physical width=\pgfpageoptionwidth,%
+      last logical shipout=3%
+    }
+    
+    \pgfpageslogicalpageoptions{1}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.25\pgfphysicalwidth}{.82\pgfphysicalheight}%
+    }%
+    \pgfpageslogicalpageoptions{2}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.25\pgfphysicalwidth}{.47\pgfphysicalheight}%
+    }%
+    \pgfpageslogicalpageoptions{3}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.25\pgfphysicalwidth}{.17\pgfphysicalheight}%
+    }%	
+	\pgfpageslogicalpageoptions{4}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.85\pgfphysicalwidth}{.82\pgfphysicalheight},%
+      copy from=4
+    }%
+    \pgfpageslogicalpageoptions{5}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.85\pgfphysicalwidth}{.47\pgfphysicalheight},%
+      copy from=5
+    }%
+    \pgfpageslogicalpageoptions{6}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.85\pgfphysicalwidth}{.17\pgfphysicalheight},%
+      copy from=6
+    }%
+    
+      \pgfpagesshipoutlogicalpage{4}\copy\notesbox
+      \pgfpagesshipoutlogicalpage{5}\copy\notesbox
+      \pgfpagesshipoutlogicalpage{6}\copy\notesbox
+    }
+  }
+
+  \pgfpagesuselayout{3 on 1 with notes}
+
+}
+
+\setbeamercolor{upper separation line head}{bg=red}
+\setbeamercolor{headline}{bg=red}
+\setbeamertemplate{headline}
+{%
+\begin{beamercolorbox}{section in head/foot}
+\insertsectionnavigationhorizontal{.75\textwidth}{}{}
+\hfill \insertpagenumber /\insertdocumentendpage
+\end{beamercolorbox}%
+}
+\setbeamercolor{section number projected}{bg=red,fg=black}
+\setbeamercolor{subsection number projected}{bg=red,fg=black}
+%\setbeamercolor{frametitle}{bg=lightgray,fg=black}
+
+\setbeamertemplate{itemize item}{\color{georgiaRed}$\blacklozenge$}
+\setbeamertemplate{itemize subitem}{\color{georgiaRed}$\blacktriangleright$}
+
+\newcommand{\dotfield}[2]{%
+  \begin{tikzpicture}[y=0.25cm, x=0.25cm,font=\sffamily]
+    \foreach \y in {0,...,#2} {
+      \foreach \x in {0,...,#1} {
+        \draw[fill=georgiaRed,opacity=0.1] (\x,\y)  circle [radius=0.03em];
+      }
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\twoByTwo}[4]{%
+  \left[
+    \begin{array}{rr}
+      #1 & #2 \\
+      #3 & #4 \\
+    \end{array}
+  \right]
+}
+
+\newcommand{\threeByThree}[9]{%
+  \left[
+    \begin{array}{rrr}
+      #1 & #2 & #3 \\
+      #4 & #5 & #6 \\
+      #7 & #8 & #9
+    \end{array}
+  \right]
+}
+
+\newcommand{\columnVector}[1]{%
+  \left[
+    \begin{array}{r}
+    #1                           
+    \end{array}
+  \right]
+}
+
+
+\begin{document}
+
+
+
+\author{\textsc{T. Alli$^{a}$, K. Black$^{a}$}}
+\institute{$^a$Department of Mathematics, University of Georgia, GA}
+\subject{Linear Algebra}
+\keywords{Linear Transformation, Vectors, Matrices, Linear Algebra}
+
+%\lecture{Partial Fractions}{partial-fractions}
+%\section{Rational Functions}
+
+\title{Linear Least Squares Approximation Of Coefficients}
+\subtitle{Which Plane Is ``Best?''}
+
+
+\date{} % {\today}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+
+\section{The Idea}
+
+\begin{frame}{The Idea}
+
+  \begin{itemize}
+  \item We have measurable quantities.
+  \item We assume a linear relationship between them.
+  \item We want to approximate the slopes and the intercept.
+  \item We conduct an experiment to measure the quantities.
+  \item We make assumptions about the experiment.
+    \begin{itemize}
+    \item The measurements are independent of one another.
+    \item The dependent variables are changed in a reliable, repeatable, and
+      accurately measurable way.
+    \item For each set of values for the independent variable a
+      measurement of an outcome (a response) is made.
+    \item The biggest source of error is in measuring the response.
+    \item The error of the measurement is ``nice.''
+    \end{itemize}
+  \item We have more measurements than unknown values.
+  \end{itemize}
+
+\end{frame}
+
+\section{Linear Mathematical Model}
+
+\begin{frame}{Linear Mathematical Model}
+
+  \begin{itemize}
+  \item We have independent variables, $x_1$, $x_2$, $x_3$, $\ldots$,
+    $x_l$.
+  \item We have a dependent variable, $z$.
+  \item The value of $z$ can be calculated by a linear relationship,
+    \begin{eqnarray*}
+      z & = & m_1 x_1 + m_2 x_2 + m_3 x_3 + \cdots + m_l x_l + b.
+    \end{eqnarray*}
+  \item The values of $m_1$, $m_2$, $m_3$, $\ldots$, $m_l$, and $b$  are constants.
+  \end{itemize}
+
+  \vfill
+
+  \uncover<2->{Question: How do we approximate the values of these
+    constants for a given physical system?}
+
+  \vfill
+
+\end{frame}
+
+\section{Experimental Data}
+
+\begin{frame}{Experimental Data}
+
+  \begin{itemize}
+  \item Determine values of $x_1$, $x_2$, $x_3$, $\ldots$, $x_l$ that
+    can be replicated and provide the ``best'' approximation. \\
+    (Class Advertisement: Design of Experiments.)
+  \item Perform $n$ experiments with the different values (many
+    repeated),
+    \begin{eqnarray*}
+      \begin{array}{lr|r|r|r|r|r}
+        \mathrm{Experiment~1}: & x_{11}  & x_{21} & x_{31} & \ldots & x_{l1} & z_1 \\
+        \mathrm{Experiment~2}: & x_{12}  & x_{22} & x_{32} & \ldots & x_{l2} & z_2 \\
+        \mathrm{Experiment~3}: & x_{13}  & x_{23} & x_{33} & \ldots & x_{l3} & z_3 \\
+        \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+        \mathrm{Experiment~n}: & x_{1n}  & x_{2n} & x_{3n} & \ldots & x_{l1} & z_n 
+      \end{array}
+    \end{eqnarray*}
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Mathematical Model With Error}
+
+  \begin{itemize}
+  \item Our original assumption:
+    \begin{eqnarray*}
+      z_j & = & m_1 x_{1j} + m_2 x_{2j} + m_3 x_{3j} + \cdots + m_l x_{lj} + b.
+    \end{eqnarray*}
+
+  \item The world is a messy place:
+    \begin{eqnarray*}
+      z_j & = & m_1 x_{1j} + m_2 x_{2j} + m_3 x_{3j} + \cdots + m_l x_{lj} + b + \epsilon_j.
+    \end{eqnarray*}
+
+  \item So we can calculate the error
+    \begin{eqnarray*}
+      \epsilon_j  & = & z_j - \left(m_1 x_{1j} + m_2 x_{2j} + m_3 x_{3j} + \cdots + m_l x_{lj} + b \right).
+    \end{eqnarray*}
+
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Assume The Experiment Was Consistent}
+
+  Assumptions about the error term, $\epsilon_j$.
+  \begin{itemize}
+  \item Independent of the other measurements.
+  \item Normally Distributed.
+  \item There is no bias (mean is zero)
+  \item Same variation for each measurement.
+  \item Jargon: normally distributed, i.i.d. 
+  \end{itemize}
+
+\end{frame}
+
+\section{Probability Associated With The Error}
+
+\begin{frame}{Probability Associated With The Error}
+
+  \begin{itemize}
+  \item We assume that the probability we obtained the measurement
+    associated with each measurement is proportional to a normal
+    probability distribution function,
+    \begin{eqnarray*}
+      \sigma_j & \propto & e^{-\left(z_j - \left(m_1 x_{1j} + m_2 x_{2j} + m_3 x_{3j} + \cdots + m_l x_{lj} + b\right)\right)^2/(2\sigma^2)}
+    \end{eqnarray*}
+  \item Because they are independent we can approximate the
+    probability associated with all of the errors by multiplying them
+    together.
+    \begin{eqnarray*}
+      \mathrm{Prob.} & \propto & e^{-\left(z_1 - \left(m_1 x_{11} + m_2 x_{21} + m_3 x_{31} + \cdots + m_l x_{l1} + b\right)\right)^2/(2\sigma^2)} \\
+      & & e^{-\left(z_2 - \left(m_1 x_{12} + m_2 x_{22} + m_3 x_{32} + \cdots + m_l x_{l2} + b\right)\right)^2/(2\sigma^2)} \\
+      & & e^{-\left(z_3 - \left(m_1 x_{13} + m_2 x_{23} + m_3 x_{33} + \cdots + m_l x_{l3} + b\right)\right)^2/(2\sigma^2)} \\
+      & & \vdots \\
+      & & e^{-\left(z_n - \left(m_1 x_{1n} + m_2 x_{2n} + m_3 x_{3n} + \cdots + m_l x_{ln} + b\right)\right)^2/(2\sigma^2)} 
+    \end{eqnarray*}
+    
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Maximize the Probability}
+
+  We calculate the values of $m_1$, $m_2$, $m_3$, $\ldots$, $m_l$, and
+  $b$ that will maximize the probability that we would have obtained the given results:
+  \begin{eqnarray*}
+    \frac{\partial}{\partial m_1} \mathrm{Prob.} & = & 0, \\
+    \frac{\partial}{\partial m_2} \mathrm{Prob.} & = & 0, \\
+    \frac{\partial}{\partial m_3} \mathrm{Prob.} & = & 0, \\
+    \vdots & & \\
+    \frac{\partial}{\partial m_l} \mathrm{Prob.} & = & 0, \\
+    \frac{\partial}{\partial b} \mathrm{Prob.} & = & 0.
+  \end{eqnarray*}
+  
+\end{frame}
+
+\begin{frame}{Side Note}
+  \label{slide:minimization}
+
+  This is the same as maximizing the logarithm of the probability
+  (which is a heck of a lot easier to work with and easier to make
+  sense out of).
+
+  \begin{eqnarray*}
+    \ln\left(\mathrm{Prob.}\right)
+    & \propto & -\frac{1}{2}\left(z_1 - \left(m_1 x_{11} + m_2 x_{21} + m_3 x_{31} + \cdots + m_l x_{l1} + b\right)\right)^2 \\
+      & & -\frac{1}{2}\left(z_2 - \left(m_1 x_{12} + m_2 x_{22} + m_3 x_{32} + \cdots + m_l x_{l2} + b\right)\right)^2 \\
+      & & -\frac{1}{2}\left(z_3 - \left(m_1 x_{13} + m_2 x_{23} + m_3 x_{33} + \cdots + m_l x_{l3} + b\right)\right)^2 \\
+      & & \vdots \\
+      & & -\frac{1}{2}\left(z_n - \left(m_1 x_{1n} + m_2 x_{2n} + m_3 x_{3n} + \cdots + m_l x_{ln} + b\right)\right)^2 
+  \end{eqnarray*}
+
+  
+  
+\end{frame}
+
+\begin{frame}{Geometric Interpretation}
+  \dotfield{60}{24}
+\end{frame}
+
+\section{The System Of Equations}
+
+\begin{frame}{The System Of Equations}
+
+  If you take the partial derivatives shown on slide
+  \ref{slide:minimization}, then you get a system of equations of the
+  form
+  \begin{eqnarray*}
+    \sum_{j=1}^n x_{1j} \left( z_j  - m_1 x_{1j} - m_2 x_{2j} - \cdots - m_lx_{lj} - b\right) & = & 0, \\
+    \sum_{j=1}^n x_{2j} \left( z_j  - m_1 x_{1j} - m_2 x_{2j} - \cdots - m_lx_{lj} - b \right) & = & 0, \\
+    \vdots & & \\
+    \sum_{j=1}^n x_{nj} \left( z_j  - m_1 x_{1j} - m_2 x_{2j} - \cdots - m_lx_{lj} - b \right) & = & 0, \\
+    \sum_{j=1}^n z_j - m_1 x_{1j} - m_2 x_{2j} - \cdots - m_lx_{lj} - b & = & 0. \\
+  \end{eqnarray*}
+  
+\end{frame}
+
+\begin{frame}{Yuk}
+
+  What the....
+  
+\end{frame}
+
+\begin{frame}{Another Way}
+
+  Ideally....
+  \begin{eqnarray*}
+    m_1 x_{11} + m_2 x_{21} + \cdots + m_lx_{l1} + b  & = &   z_1 \\
+    m_1 x_{12} + m_2 x_{22} + \cdots + m_lx_{l2} + b  & = &   z_2 \\
+    \vdots & & \\
+    m_1 x_{1n} + m_2 x_{2n} + \cdots + m_lx_{ln} + b & = & z_n  \\
+  \end{eqnarray*}
+
+  \begin{eqnarray*}
+    \left[
+    \begin{array}{rrrrrr}
+      x_{11} & x_{21} & x_{31} &  \cdots & x_{l1} & 1 \\
+      x_{12} & x_{22} & x_{32} &  \cdots & x_{l2} & 1 \\
+      x_{13} & x_{23} & x_{33} &  \cdots & x_{l3} & 1 \\
+
+      x_{1n} & x_{2n} & x_{3n} &  \cdots & x_{ln} & 1 
+    \end{array}
+    \right]
+    \left[
+    \begin{array}{r}
+      m_1 \\
+      m_2 \\
+      m_3 \\
+      \vdots \\
+      m_l \\
+      b  
+    \end{array}
+    \right]
+             & = &
+                   \left[
+                   \begin{array}{r}
+                     z_1 \\
+                     z_2 \\
+                     z_3 \\
+                     \vdots \\
+                     z_l
+                   \end{array}
+    \right]
+  \end{eqnarray*}
+  
+  
+\end{frame}
+
+\begin{frame}{Another Way}
+
+  Ideally....
+  \begin{eqnarray*}
+    \left[
+    \begin{array}{rrrrrr}
+      x_{11} & x_{21} & x_{31} &  \cdots & x_{l1} & 1 \\
+      x_{12} & x_{22} & x_{32} &  \cdots & x_{l2} & 1 \\
+      x_{13} & x_{23} & x_{33} &  \cdots & x_{l3} & 1 \\
+
+      x_{1n} & x_{2n} & x_{3n} &  \cdots & x_{ln} & 1 
+    \end{array}
+    \right]
+    \left[
+    \begin{array}{r}
+      m_1 \\
+      m_2 \\
+      m_3 \\
+      \vdots \\
+      m_l \\
+      b  
+    \end{array}
+    \right]
+             & ``=" &
+                   \left[
+                   \begin{array}{r}
+                     z_1 \\
+                     z_2 \\
+                     z_3 \\
+                     \vdots \\
+                     z_l
+                   \end{array}
+    \right]
+  \end{eqnarray*}
+
+  Or
+  \begin{eqnarray*}
+    A \vec{p} & ``=" & \vec{z}
+  \end{eqnarray*}
+
+  See next video on how to proceed....
+  
+  
+\end{frame}
+
+
+
+
+\end{document}

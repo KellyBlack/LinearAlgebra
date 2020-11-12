@@ -1,0 +1,580 @@
+\documentclass[svgnames,table,,aspectratio=169]{beamer}
+%\documentclass[svgnames,table,handout,aspectratio=129]{beamer}
+\usepackage{hhline}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{amssymb}
+%\usepackage{/usr/lib64/R/share/texmf/Sweave}
+\usepackage{polynom}
+\usepackage{qrcode}
+
+
+%\input{latexdefinitions}
+\definecolor{georgiaRed}{RGB}{100,0,00}
+\definecolor{mediumGray}{gray}{0.6}
+
+
+
+\usetheme{Frankfurt}%
+%\usetheme{Warsaw}%
+%\useoutertheme{smoothbars}
+
+
+%\usecolortheme{seagull}
+\usecolortheme{beaver}
+\logo{\includegraphics[height=.125in]{ugaLogo}}
+
+% Note that the colour definitions are given in the latexDefinitions
+% file.
+\setbeamercolor{palette primary}{fg=georgiaRed,bg=white}
+\setbeamercolor{palette secondary}{fg=georgiaRed,bg=white}
+\setbeamercolor{palette tertiary}{fg=georgiaRed,bg=white}
+\setbeamercolor{palette quaternary}{bg=mediumGray,fg=black}
+\setbeamercolor{block title}{fg=black,bg=black!15}
+\setbeamercolor{block body}{fg=black,bg=black!10}
+\setbeamercolor{titlelike}{bg=georgiaRed,fg=white} % parent=palette quaternary}
+
+% Define the variable to determine whether or not the clicker quizzes
+% are visible in the resulting output.
+\newtoggle{clicker}
+\toggletrue{clicker}
+%\togglefalse{clicker}
+
+
+% To display a lecture uncomment out the "includeonly" line below to
+% match the name of the file. You do not have to do anything with the
+% lecture line below and can leave it commented out. It is in place
+% because at one time we had multiple lectures within a file, but that
+% has been changed.
+
+
+
+\mode<presentation>{
+  \setbeamercovered{invisible}
+  \setbeameroption{hide notes}
+}
+
+\mode<handout>{
+ 
+  \usepackage{pgfpages}
+  %\pgfpagesuselayout{4 on 1}[letterpaper, border shrink=5mm]
+  \pgfpagesuselayout{resize to}[letterpaper,border shrink=5mm]
+  \setbeameroption{show notes}
+
+
+  %\pgfpagesphysicalpageoptions{logical pages=2,physical
+  %height=\pgfpageoptionheight,physical width=\pgfpageoptionwidth}
+  % Set up the pages for notes.
+  % This idea and some code came from
+  % http://www.guidodiepen.nl/2009/07/creating-latex-beamer-handouts-with-notes/
+
+
+
+  \pgfpagesdeclarelayout{3 on 1 with notes} {
+    \edef\pgfpageoptionheight{11in} %\the\paperheight}
+    \edef\pgfpageoptionwidth{8.5in} %\the\paperwidth}
+    \edef\pgfpageoptionborder{0pt}
+  }
+
+  {
+
+	\AtBeginDocument{
+      \newbox\notesbox
+      \setbox\notesbox=\vbox{
+        \hsize=\paperwidth
+        \vskip-2.5cm\hskip-5cm\vbox{
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+          \textcolor{light-gray}{\hrule width 12.6cm\vskip0.5cm}
+
+          \vspace*{-9.75cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+          \textcolor{light-gray}{\rule[-1.0cm]{1pt}{9.25cm}\hskip0.5cm}
+
+        }
+
+      }
+
+    \pgfpagesphysicalpageoptions
+    {%
+      logical pages=6,%
+      physical height=\pgfpageoptionheight,%
+      physical width=\pgfpageoptionwidth,%
+      last logical shipout=3%
+    }
+    
+    \pgfpageslogicalpageoptions{1}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.25\pgfphysicalwidth}{.82\pgfphysicalheight}%
+    }%
+    \pgfpageslogicalpageoptions{2}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.25\pgfphysicalwidth}{.47\pgfphysicalheight}%
+    }%
+    \pgfpageslogicalpageoptions{3}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.25\pgfphysicalwidth}{.17\pgfphysicalheight}%
+    }%	
+	\pgfpageslogicalpageoptions{4}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.85\pgfphysicalwidth}{.82\pgfphysicalheight},%
+      copy from=4
+    }%
+    \pgfpageslogicalpageoptions{5}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.85\pgfphysicalwidth}{.47\pgfphysicalheight},%
+      copy from=5
+    }%
+    \pgfpageslogicalpageoptions{6}
+    {%
+      border shrink=\pgfpageoptionborder,%
+      resized width=.5\pgfphysicalwidth,%
+      resized height=.33\pgfphysicalheight,%
+      center=\pgfpoint{.85\pgfphysicalwidth}{.17\pgfphysicalheight},%
+      copy from=6
+    }%
+    
+      \pgfpagesshipoutlogicalpage{4}\copy\notesbox
+      \pgfpagesshipoutlogicalpage{5}\copy\notesbox
+      \pgfpagesshipoutlogicalpage{6}\copy\notesbox
+    }
+  }
+
+  \pgfpagesuselayout{3 on 1 with notes}
+
+}
+
+\setbeamercolor{upper separation line head}{bg=red}
+\setbeamercolor{headline}{bg=red}
+\setbeamertemplate{headline}
+{%
+\begin{beamercolorbox}{section in head/foot}
+\insertsectionnavigationhorizontal{.75\textwidth}{}{}
+\hfill \insertpagenumber /\insertdocumentendpage
+\end{beamercolorbox}%
+}
+\setbeamercolor{section number projected}{bg=red,fg=black}
+\setbeamercolor{subsection number projected}{bg=red,fg=black}
+%\setbeamercolor{frametitle}{bg=lightgray,fg=black}
+
+\setbeamertemplate{itemize item}{\color{georgiaRed}$\blacklozenge$}
+\setbeamertemplate{itemize subitem}{\color{georgiaRed}$\blacktriangleright$}
+
+\newcommand{\dotfield}[2]{%
+  \begin{tikzpicture}[y=0.25cm, x=0.25cm,font=\sffamily]
+    \foreach \y in {0,...,#2} {
+      \foreach \x in {0,...,#1} {
+        \draw[fill=georgiaRed,opacity=0.1] (\x,\y)  circle [radius=0.03em];
+      }
+    }
+  \end{tikzpicture}
+}
+
+\newcommand{\twoByTwo}[4]{%
+  \left[
+    \begin{array}{rr}
+      #1 & #2 \\
+      #3 & #4 \\
+    \end{array}
+  \right]
+}
+
+\newcommand{\threeByThree}[9]{%
+  \left[
+    \begin{array}{rrr}
+      #1 & #2 & #3 \\
+      #4 & #5 & #6 \\
+      #7 & #8 & #9
+    \end{array}
+  \right]
+}
+
+\newcommand{\columnVector}[1]{%
+  \left[
+    \begin{array}{r}
+    #1                           
+    \end{array}
+  \right]
+}
+
+
+\begin{document}
+
+
+
+\author{\textsc{T. Alli$^{a}$, K. Black$^{a}$}}
+\institute{$^a$Department of Mathematics, University of Georgia, GA}
+\subject{Linear Algebra}
+\keywords{Linear Transformation, Vectors, Matrices, Linear Algebra}
+
+%\lecture{Partial Fractions}{partial-fractions}
+%\section{Rational Functions}
+
+\title{Section 2.3: Matrix Equations}
+\subtitle{How To Determine Whether Or Not A Solution To A Linear
+  System Exists}
+
+
+\date{} % {\today}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+
+\section{Goals}
+
+\begin{frame}{Goals}
+
+  \begin{itemize}
+  \item Express a given system of linear equations four different
+    ways, including using a matrix.
+  \item Determine if a system of linear equations is consistent given the
+    matrix associated with the system of equations.
+  \item Perform basic matrix/vector operations.
+  \item Determine conditions necessary for a solution to always exist
+    given the matrix associated with the system of equations.
+  \end{itemize}
+
+\end{frame}
+
+\section{Matrices}
+
+\begin{frame}{What is a matrix?}
+
+  A matrix is a set of numbers in an array with $m$ rows and $n$
+  columns,
+  \begin{eqnarray*}
+    A & = &
+            \left[
+            \begin{array}{rrrrrr}
+              a_{1,1} & a_{1,2} & a_{1,3} & \cdots & a_{1,n-1} & a_{1,n} \\
+              a_{2,1} & a_{2,2} & a_{2,3} & \cdots & a_{2,n-1} & a_{2,n} \\
+              a_{3,1} & a_{3,2} & a_{3,3} & \cdots & a_{3,n-1} & a_{3,n} \\
+              \vdots  & \vdots & \vdots &        & \vdots   & \vdots \\
+              a_{m,1} & a_{m,2} & a_{m,3} & \cdots & a_{m,n-1} & a_{m,n} 
+            \end{array}
+            \right].
+  \end{eqnarray*}
+
+\end{frame}
+
+\begin{frame}{Example}
+
+  For example, a matrix with 4 rows and 3 columns is shown below:
+  \only<1>{
+    \begin{eqnarray*}
+      A & = &
+              \left[
+              \begin{array}{rrr}
+                -4 &  2 &  1 \\
+                 8 & -2 &  0 \\
+                 3 &  1 &  7 \\
+                -9 &  6 &  4
+              \end{array}
+                          \right].
+    \end{eqnarray*}
+    }
+  \only<2->{
+    \begin{eqnarray*}
+      A & = &
+              \left[
+              \begin{array}{r|r|r}
+                -4 &  2 &  1 \\
+                 8 & -2 &  0 \\
+                 3 &  1 &  7 \\
+                -9 &  6 &  4
+              \end{array}
+                          \right].
+    \end{eqnarray*}
+    }
+  \uncover<3>{
+    \begin{eqnarray*}
+      A & = &
+              \left[
+              \begin{array}{r|r|r}
+                \vec{v}_1 & \vec{v}_2 & \vec{v}_3
+              \end{array}
+                          \right].
+    \end{eqnarray*}
+    }
+
+  Nomenclature: In this case we say that $A$ is a $4\times 3$
+  matrix. We may also say that $A$ is in ${\mathbb R}^{4\times 3}$.
+  
+  
+\end{frame}
+
+\begin{frame}{What is a matrix?}
+
+  A matrix is a set of numbers in an array with $m$ rows and $n$
+  columns,
+    \begin{eqnarray*}
+      A & = &
+              \left[
+              \begin{array}{rrrrrr}
+                a_{1,1} & a_{1,2} & a_{1,3} & \cdots & a_{1,n-1} & a_{1,n} \\
+                a_{2,1} & a_{2,2} & a_{2,3} & \cdots & a_{2,n-1} & a_{2,n} \\
+                a_{3,1} & a_{3,2} & a_{3,3} & \cdots & a_{3,n-1} & a_{3,n} \\
+                \vdots  & \vdots & \vdots &        & \vdots   & \vdots \\
+                a_{m,1} & a_{m,2} & a_{m,3} & \cdots & a_{m,n-1} & a_{m,n} 
+              \end{array}
+              \right].
+    \end{eqnarray*}
+  \uncover<2>{
+    \begin{eqnarray*}
+      A & = &
+              \left[
+              \begin{array}{rrrrrr}
+                \vec{v}_1 & \vec{v}_2 & \vec{v}_3 & \cdots &
+                \vec{v}_{n-1} & \vec{v}_n
+              \end{array}
+              \right].
+    \end{eqnarray*}
+    Each vector is a column vector with $m$ rows.
+  }
+
+
+\end{frame}
+
+
+\begin{frame}{Why Go To All This Trouble?}
+
+  We define matrix/vector multiplication to be consistent with the
+  idea of vector equations we saw in the previous section.
+
+  Recall:
+  \begin{eqnarray*}
+    2 x_1 - x_2 + 4 x_3 & = & 0, \\
+    4 x_1 + x_2 - 5 x_3 & = & 20.
+  \end{eqnarray*}
+  \uncover<2->{
+    This can be written as
+    \begin{eqnarray*}
+      x_1 \columnVector{ 2 \\ 4} +
+      x_2 \columnVector{-1 \\ 1} +
+      x_3 \columnVector{4 \\ -5}
+      & = &
+      \columnVector{0 \\ 20}.
+    \end{eqnarray*}
+  }
+  
+\end{frame}
+
+\begin{frame}{Matrix/Vector Multiplication}
+
+  We define matrix/vector multiplication so that
+  \begin{eqnarray*}
+  \left[
+    \begin{array}{rrr}
+      2 & -1 &  4 \\
+      4 &  1 & -5 \\
+    \end{array}
+    \right]
+    \columnVector{x_1 \\ x_2 \\ x_3}
+    & = &
+      x_1 \columnVector{ 2 \\ 4} +
+      x_2 \columnVector{-1 \\ 1} +
+      x_3 \columnVector{4 \\ -5}              
+  \end{eqnarray*}
+  
+\end{frame}
+
+\begin{frame}{Equivalent Ways To Express A System Of Linear Equations}
+
+    \begin{eqnarray*}
+    2 x_1 - x_2 + 4 x_3 & = & 0, \\
+    4 x_1 + x_2 - 5 x_3 & = & 20.
+  \end{eqnarray*}
+
+  This can be written as
+  \begin{eqnarray*}
+    x_1 \columnVector{ 2 \\ 4} +
+    x_2 \columnVector{-1 \\ 1} +
+    x_3 \columnVector{4 \\ -5}
+    & = &
+          \columnVector{0 \\ 20}.
+  \end{eqnarray*}
+
+  It can also be written as 
+  \begin{eqnarray*}
+    \left[
+    \begin{array}{rrr}
+      2 & -1 &  4 \\
+      4 &  1 & -5 \\
+    \end{array}
+    \right]
+    \columnVector{x_1 \\ x_2 \\ x_3}
+    & = &
+    \columnVector{0 \\ 20}.
+  \end{eqnarray*}
+
+
+\end{frame}
+
+\begin{frame}{That Is Not What My High School Teacher Told Me!!!!}
+  \vspace*{-2em}
+  \begin{eqnarray*}
+    \left[
+    \begin{array}{rrr}
+      2 & -1 &  4 \\
+      4 &  1 & -5 \\
+    \end{array}
+    \right]
+    \columnVector{x_1 \\ x_2 \\ x_3}
+    & = &
+    \columnVector{0 \\ 20}.
+  \end{eqnarray*}
+
+  \dotfield{60}{24}
+  
+\end{frame}
+
+\begin{frame}{Details}
+
+  By the way, we just defined a new operation! Surely, there must be
+  some rules and restrictions? (Yes, of course there are.)
+
+  We have
+  \begin{eqnarray*}
+    A\vec{x} & = & \vec{b}.
+  \end{eqnarray*}
+  In order to make sense the rows and columns have to work out. If $A$
+  has $m$ rows and $n$ columns, then $\vec{x}$ must have $n$ rows, and
+  $\vec{b}$ must have $m$ rows.
+  
+\end{frame}
+
+\section{Matrix/Vector Operations}
+
+\begin{frame}{Matrix/Vector Operations}
+
+  The properties of vector operations translate nicely to matrix/vector operations:
+  \begin{eqnarray*}
+    A\left(r\vec{u}\right) & = & r A \vec{u}, \\
+    A\left(\vec{u}+\vec{v}\right) & = & A\vec{u} + A\vec{v}.
+  \end{eqnarray*}
+  
+\end{frame}
+
+\section{Solutions To Linear Equations}
+
+\begin{frame}{Solutions To Linear Equations}
+
+  Given a matrix, $A$, and a vector $\vec{b}$ does a solution(s),
+  $\vec{x}$, exist to the linear system
+  \begin{eqnarray*}
+    A\vec{x} & = & \vec{b}?
+  \end{eqnarray*}
+  \only<1>{
+    \begin{itemize}
+    \item Does $\vec{x}$ exist?
+    \item What are all possible solutions?
+    \item What are the restrictions on $\vec{b}$?
+    \end{itemize}
+  }
+
+  \only<2>{
+    \dotfield{60}{21}
+  }
+  
+\end{frame}
+
+\begin{frame}{Existence Of Solutions}
+
+  \begin{eqnarray*}
+    A & = & \left[ \vec{a}_1 ~ \vec{a}_2 ~ \vec{a}_3 ~ \cdots ~ \vec{a}_n \right]
+  \end{eqnarray*}
+
+  \dotfield{60}{24}
+  
+\end{frame}
+
+\begin{frame}{Existence Of Solutions}
+
+  For solutions to exist for the system of linear equations,
+  \begin{eqnarray*}
+    A \vec{x} & = & \vec{b},
+  \end{eqnarray*}
+  \begin{itemize}
+  \item $x_1\vec{a}_1 ~ + ~ x_2 \vec{a}_2 ~ + ~ x_3 \vec{a}_3 ~ \cdots ~ + ~ x_n\vec{a}_n = \vec{b}$.
+  \item $\vec{b}$ is a linear combination of the columns of $A$.
+  \item $\vec{b}$ is in the span of the columns of $A$.
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Existence Of Solutions}
+
+  For solutions to exist for \textbf{ANY}  $\vec{b}$ the system of linear equations,
+  \begin{eqnarray*}
+    A \vec{x} & = & \vec{b},
+  \end{eqnarray*}
+  \begin{itemize}
+  \item The span of the columns of $A$ is ${\mathbb R}^m$
+  \item There is a pivot position in every row of $A$.
+  \end{itemize}
+  
+\end{frame}
+
+
+\begin{frame}{Blank Page}
+  \dotfield{60}{24}
+\end{frame}
+
+
+\end{document}
